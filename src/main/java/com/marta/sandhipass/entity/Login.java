@@ -9,14 +9,16 @@ import java.sql.Date;
 import java.sql.Time;
 
 /**
- *
- * @author marta
+ * Entitat Login.
+ * @author Marta Bruch
  */
 public class Login {
     private int id;
     private int id_usuari;
     private Date dia;
     private Time hora;
+    private String sistema_operatiu;
+    private String navegador;
 
     public Login() {
     }
@@ -53,9 +55,20 @@ public class Login {
         this.hora = hora;
     }
 
-    
-    
-    
+    public String getSistema_operatiu() {
+        return sistema_operatiu;
+    }
 
+    public void setSistema_operatiu(String sistema_operatiu) {
+        this.sistema_operatiu = sistema_operatiu;
+    }
+
+    public String getNavegador() {
+        return navegador;
+    }
+
+    public void setNavegador(String navegador) {
+        this.navegador = navegador;
+    }
     
 }

@@ -9,8 +9,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- *
- * @author marta
+ * Classe abstracte del Gestor.
+ * @author Marta Bruch
  */
 public abstract class Gestor {
     private final HttpServletRequest request;

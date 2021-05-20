@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
- *
- * @author marta
+ * Gestor de l'aplicació.
+ * @author Marta Bruch
  */
 public class SandhiPassGestor extends Gestor {
 
@@ -27,6 +27,10 @@ public class SandhiPassGestor extends Gestor {
         super(request);
     }
 
+    /**
+     * Mètode principal del gestor.
+     * @param parameters Paràmetres que rep de la vista
+     */
     @Override
     public void ejecutar(Map parameters) {
         SandhiPassVO passVO = new SandhiPassVO();
@@ -214,14 +218,14 @@ public class SandhiPassGestor extends Gestor {
 
     /**
      * Mètode que crida al DAO per consultar una contrasenya en concret. I envia
-     * la contrasenya al VO. Mostra la part de la vista per generar una
+     * la contrasenya al VO per poder-la editar. Mostra la part de la vista per generar una
      * contrasenya.
      *
-     * @param passVO
-     * @param passDAO
-     * @param contrasenya
+     * @param passVO SandhiPassVO
+     * @param passDAO SandhiPassDAO
+     * @param contrasenya Contrasenya a editar
      */
-    public void actionEditar(SandhiPassVO passVO, SandhiPassDAO passDAO, Contrasenya contrasenya) {
+    private void actionEditar(SandhiPassVO passVO, SandhiPassDAO passDAO, Contrasenya contrasenya) {
         String botoCrear = "display: none;";
         String botoGuardar = "display: inline;";
         String display = "";
@@ -254,7 +258,7 @@ public class SandhiPassGestor extends Gestor {
      * @param contrasenya contrasenya
      * @param id_usuari id de l'usuari
      */
-    public void actionGuardar(SandhiPassVO passVO, SandhiPassDAO passDAO, Contrasenya contrasenya, int id_usuari) {
+    private void actionGuardar(SandhiPassVO passVO, SandhiPassDAO passDAO, Contrasenya contrasenya, int id_usuari) {
         Boolean validar;
         String idContrasenya = getRequest().getParameter("inputIdGuardar");
         int idGuardar = Integer.parseInt(getRequest().getParameter("inputIdGuardar"));
@@ -300,7 +304,7 @@ public class SandhiPassGestor extends Gestor {
      * @param contrasenya Contrasenya per comprovar els camps
      * @return Retorna true si tots els camps estan emplenats
      */
-    public Boolean validarCamps(SandhiPassVO passVO, Contrasenya contrasenya) {
+    private Boolean validarCamps(SandhiPassVO passVO, Contrasenya contrasenya) {
         Boolean campNom, campUsuari, campContrasenya;
         String error, missatge;
         campNom = campUsuari = campContrasenya = true;
@@ -388,7 +392,7 @@ public class SandhiPassGestor extends Gestor {
      * triat l'usuari.
      *
      * @param passVO SandhiPassVO
-     * @param contrasenya que s'està creant
+     * @param contrasenya Contrasenya que s'està creant
      */
     private void actionGenerarContrasenya(SandhiPassVO passVO, Contrasenya contrasenya, int id_usuari) {
         int longitud, idGuardar = -1;

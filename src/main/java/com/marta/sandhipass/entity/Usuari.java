@@ -6,8 +6,8 @@
 package com.marta.sandhipass.entity;
 
 /**
- *
- * @author marta
+ * Entitat Usuari.
+ * @author Marta Bruch
  */
 public class Usuari {
     private int id;

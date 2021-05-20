@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author marta
+ * Classe del DAO (Data Access Object).
+ * @author Marta Bruch
  */
 public class SandhiPassDAO {
     private final String KEY = "bruchfigols@gmail.com";
@@ -24,13 +24,11 @@ public class SandhiPassDAO {
         this.connectionMYSQL = new LOConnectionMYSQL();
     }
     
-    
-    
     /**
      * Mètode que et retorna totes les contrasenyes que té un usuari ordenades
-     * per nom.
+     * pel nom.
      * @param id_usuari id de l'usuari
-     * @return una llista de totes les contrasenyes.
+     * @return Una llista de totes les contrasenyes
      */
     public List<Object> llistaTotesContrasenyes(int id_usuari){
         String query = "SELECT * FROM contrasenya WHERE id_user = " + id_usuari + " ORDER BY nom";
@@ -41,7 +39,7 @@ public class SandhiPassDAO {
     /**
      * Mètode que et retorna una contrasenya en concret.
      * @param contrasenya Contrasenya a buscar
-     * @return la contrasenya trobada
+     * @return La contrasenya trobada
      */
     public Contrasenya buscarContrasenya(Contrasenya contrasenya){
         Usuari usuari = buscarNomUsuari(contrasenya);
@@ -62,9 +60,9 @@ public class SandhiPassDAO {
     }
     
     /**
-     * Mètode que et retorna un usuari en concret buscat per seu id.
+     * Mètode que et retorna un usuari en concret buscat pel seu id.
      * @param contrasenya Contrasenya la qual conté l'id de l'usuari a buscar
-     * @return Usuari
+     * @return L'usuari trobat
      */
     public Usuari buscarNomUsuari(Contrasenya contrasenya){
         Usuari usuari = new Usuari();
@@ -83,7 +81,7 @@ public class SandhiPassDAO {
     /**
      * Mètode que busca un usuari pel seu mail.
      * @param usuari Usuari a buscar
-     * @return Un booleà conforme si ha trobat l'usuari
+     * @return L'usuari trobat
      */
     public Usuari buscarMailUsuari(Usuari usuari){        
         ArrayList<Usuari> llistaU;
@@ -104,7 +102,7 @@ public class SandhiPassDAO {
      * Mètode que retorna una llista de contrasenyes que conté el criteri de cerca.
      * @param paraula Cadena a cercar
      * @param id_usuari id de l'usuari
-     * @return una llista de contrasenyes
+     * @return Una llista de les contrasenyes trobades
      */
     public List<Object> buscarContrasenyaPerNom(String paraula, int id_usuari){
         paraula = "%" + paraula + "%";

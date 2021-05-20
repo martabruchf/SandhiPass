@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- *
- * @author marta
+ * Classe a on hi ha mètodes d'utilitats.
+ * @author Marta Bruch
  */
 public class Utilitats {
 
@@ -26,13 +26,13 @@ public class Utilitats {
     }
 
     /**
-     * Mètode que genera una contrasenya aleatòria segons els criteris passats.
-     * @param majuscules Booleà si la contrasenya ha de contenir com a mínim una majúscula.
-     * @param minuscules Booleà si la contrasenya ha de contenir com a mínim una minúscula.
-     * @param numeros Booleà si la contrasenya ha de contenir com a mínim un número.
-     * @param simbols Booleà si la contrasenya ha de contenir com a mínim un símbol.
+     * Mètode que genera una contrasenya aleatòria segons els criteris passats
+     * @param majuscules Booleà si la contrasenya ha de contenir com a mínim una majúscula
+     * @param minuscules Booleà si la contrasenya ha de contenir com a mínim una minúscula
+     * @param numeros Booleà si la contrasenya ha de contenir com a mínim un número
+     * @param simbols Booleà si la contrasenya ha de contenir com a mínim un símbol
      * @param llargada Llargada de la contrasenya
-     * @return La contrasenya generada.
+     * @return La contrasenya generada
      */
     public String generarContrasenya(Boolean majuscules, Boolean minuscules, Boolean numeros, Boolean simbols, int llargada) {
         String contrasenya = "";

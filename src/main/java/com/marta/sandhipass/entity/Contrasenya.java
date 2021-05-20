@@ -6,8 +6,8 @@
 package com.marta.sandhipass.entity;
 
 /**
- *
- * @author marta
+ * Entitat Contrasenya.
+ * @author Marta Bruch
  */
 public class Contrasenya {
     private int id;
@@ -67,7 +67,5 @@ public class Contrasenya {
     public void setContrasenya(String contrasenya) {
         this.contrasenya = contrasenya;
     }
-    
-    
     
 }

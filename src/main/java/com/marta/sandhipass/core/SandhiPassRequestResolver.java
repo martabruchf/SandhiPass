@@ -9,13 +9,18 @@ import com.marta.sandhipass.controllers.SandhiPassGestor;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- *
- * @author marta
+ * Classe que recupera l'acció del formulari.
+ * @author Marta Bruch
  */
 public class SandhiPassRequestResolver {
     // El que hi ha en el case s'ha de posar en un servlet-mapping al fitxer web.xml
     // També els hi hem de dir als formularis amb el action="/SandhiPass/Contrasenyes"
 
+    /**
+     * Recupera l'acció del formulari.
+     * @param request HttpServletRequest
+     * @return Un nou SandhiPassGestor
+     */
     public static Gestor resolveGestor(HttpServletRequest request) {
         switch (request.getServletPath().replace("/", "")) {
             case "Contrasenyes":

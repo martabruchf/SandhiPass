@@ -8,8 +8,8 @@ package com.marta.sandhipass.entity;
 import java.sql.Date;
 
 /**
- *
- * @author marta
+ * Entitat Versions.
+ * @author Marta Bruch
  */
 public class Versions {
     private int id;

@@ -9,8 +9,9 @@ import java.sql.ResultSet;
 import java.util.List;
 
 /**
- *
- * @author marta
+ * Interfícia per la connexió a la base de dades.
+ * Aquesta interfícia té les constants per la connexió.
+ * @author Marta Bruch
  */
 public interface ILOConnectionMYSQL {
     final String DATABASE = "sandhipass"; //Nom de la base de dades

@@ -10,8 +10,8 @@ import com.marta.sandhipass.entity.Usuari;
 import java.util.ArrayList;
 
 /**
- *
- * @author marta
+ * Mètode que conté els atributs per enviar a la vista.
+ * @author Marta Bruch
  */
 public class SandhiPassVO {
     private ArrayList <Contrasenya> arrayListContrasenya;

@@ -8,6 +8,7 @@ package com.marta.sandhipass.mysql.core;
 import com.marta.sandhipass.entity.Contrasenya;
 import com.marta.sandhipass.entity.Usuari;
 import com.marta.sandhipass.entity.Login;
+import com.marta.sandhipass.entity.Preferencies;
 import com.marta.sandhipass.entity.Versions;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
@@ -22,8 +23,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author marta
+ * Classe que conté la connexió a la base de dades i els mètodes del CRUD.
+ * @author Marta Bruch
  */
 public class LOConnectionMYSQL implements ILOConnectionMYSQL {
 
@@ -31,7 +32,7 @@ public class LOConnectionMYSQL implements ILOConnectionMYSQL {
     private Statement statement;
 
     /**
-     * Mètode que es connecta a la base de dades
+     * Mètode que es connecta a la base de dades.
      */
     @Override
     public void openConnection() {
@@ -58,10 +59,16 @@ public class LOConnectionMYSQL implements ILOConnectionMYSQL {
                 return new Login();
             case "Versions":
                 return new Versions();
+            case "Preferencies":
+                return new Preferencies();
         }
         return null;
     }
 
+    /**
+     * Mètode que fa l'insert a la base de dades.
+     * @param query Sentència Insert
+     */
     @Override
     public void insert(String query) {
         try {
@@ -77,6 +84,12 @@ public class LOConnectionMYSQL implements ILOConnectionMYSQL {
         }
     }
 
+    /**
+     * Mètode que fa el select a la base de dades.
+     * @param query Sentència Select
+     * @param classType Tipus d'objecte que ha de retornar
+     * @return Llista dels objectes retornats per la base de dades
+     */
     @Override
     public List<Object> select(String query, Class classType) {
         try {
@@ -96,6 +109,10 @@ public class LOConnectionMYSQL implements ILOConnectionMYSQL {
         return null;
     }
 
+    /**
+     * Mètode que fa el update a la base de dades.
+     * @param query Sentència Update
+     */
     @Override
     public void update(String query) {
         try {
@@ -111,6 +128,10 @@ public class LOConnectionMYSQL implements ILOConnectionMYSQL {
         }
     }
 
+    /**
+     * Mètode que fa el delete a la base de dades.
+     * @param query Sentència Delete
+     */
     @Override
     public void delete(String query) {
         try {
@@ -126,6 +147,13 @@ public class LOConnectionMYSQL implements ILOConnectionMYSQL {
         }
     }
 
+    /**
+     * Mètode que retorna la llista d'objectes trobats a la base de dades.
+     * @param rs ResultSet
+     * @param classType Classe que ha de retornar
+     * @return Llista d'objectes retornats per la base de dades
+     * @throws IllegalAccessException 
+     */
     @Override
     public List<Object> readResultSet(ResultSet rs, Class classType) throws IllegalAccessException {
         List<Object> list = new ArrayList();
@@ -166,6 +194,9 @@ public class LOConnectionMYSQL implements ILOConnectionMYSQL {
         return list;
     }
 
+    /**
+     * Mètode que tanca la connexió a la base de dades.
+     */
     @Override
     public void closeConnection() {
         try {
