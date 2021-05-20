@@ -1,0 +1,14 @@
+com\marta\sandhipass\entity\Login.class
+com\marta\sandhipass\controllers\SandhiPassGestor.class
+com\marta\sandhipass\core\Gestor.class
+com\marta\sandhipass\mysql\core\ILOConnectionMYSQL.class
+com\marta\sandhipass\dao\SandhiPassDAO.class
+com\marta\sandhipass\vo\SandhiPassVO.class
+com\marta\sandhipass\entity\Contrasenya.class
+com\marta\sandhipass\servlet\SandhiPassServlet.class
+com\marta\sandhipass\core\SandhiPassRequestResolver.class
+com\marta\sandhipass\utility\Utilitats.class
+com\marta\sandhipass\mysql\core\LOConnectionMYSQL.class
+com\marta\sandhipass\core\SandhiPassScreenResolver.class
+com\marta\sandhipass\entity\Usuari.class
+com\marta\sandhipass\entity\Versions.class

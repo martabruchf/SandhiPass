@@ -1,0 +1,91 @@
+body{
+    color: black;
+}
+
+footer{
+    text-align: center;
+    background:#58ACFA;
+}
+
+.bg-light {
+    background-color: #58ACFA!important;
+}
+
+.btn-outline-dark {
+    color: #58ACFA;
+    border-color: #58ACFA;
+}
+
+.btn-outline-dark:hover {
+    color: white;
+    border-color: white;
+    background-color: #58ACFA;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #58ACFA;
+    border-color: #58ACFA;
+    font-size: large;
+}
+
+.alert-light {
+    color: #818182;
+    border-color: black;
+    padding: 2%;
+}
+
+.alert-primary{
+    font-weight: bold;    
+}
+
+.col-form-label {
+    color: black;
+    font-size: large;
+}
+
+.form-check-label {
+    color: black;
+    font-size: large;
+}
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    font-size: large;
+}
+
+img{
+    display:block;
+    margin:auto;
+}
+
+#botonsTaula{
+  text-align: right!Important;
+}
+
+#botonsTaulaEliminar{
+    text-align: left!Important;
+}
+
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(.3rem - 1px);
+    border-top-right-radius: calc(.3rem - 1px);
+}
+
+.campObligatori{
+    color: red;
+}
+
+/*Mida de la lletra en mòbils*/
+@media screen and (max-device-width : 480px) {
+    body{
+        font-size: calc(0.5em + 1vw);
+    }
+}
