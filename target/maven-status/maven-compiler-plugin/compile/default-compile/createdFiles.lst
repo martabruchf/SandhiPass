@@ -11,4 +11,5 @@ com\marta\sandhipass\utility\Utilitats.class
 com\marta\sandhipass\mysql\core\LOConnectionMYSQL.class
 com\marta\sandhipass\core\SandhiPassScreenResolver.class
 com\marta\sandhipass\entity\Usuari.class
+com\marta\sandhipass\entity\Preferencies.class
 com\marta\sandhipass\entity\Versions.class
