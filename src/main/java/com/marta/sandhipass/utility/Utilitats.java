@@ -10,6 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Random;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * Classe a on hi ha mètodes d'utilitats.
@@ -17,12 +18,27 @@ import java.util.Random;
  */
 public class Utilitats {
 
-    public String encriptar(Usuari usuari) {
-        return null;
+    /**
+     * Mètode que crea un resum a través de la contrasenya de l'usuari. Guardem
+     * el resum a l'atribut contrasenya.
+     * @param usuari Usuari del qual volem fer un resum de la seva contrasenya
+     * @return L'usuari amb el resum com a contrasenya
+     */
+    public Usuari crearResum(Usuari usuari) {
+        String resum = BCrypt.hashpw(usuari.getContrasenya(), BCrypt.gensalt(16));
+        usuari.setContrasenya(resum);
+        return usuari;
     }
 
-    public String desencriptar(String contrasenya) {
-        return null;
+    /**
+     * Mètode que compara si una contrasenya coincideix amb el resum guardat.
+     * @param usuari Usuari el qual té la contrasenya a comparar
+     * @param usuariGuardat Usuari el qual té el resum a comparar
+     * @return Un Booleà dient true si la contrasenya coincideix amb el resum o false si no coincideix
+     */
+    public Boolean compararContrasenya(Usuari usuari, Usuari usuariGuardat) {
+        Boolean coincideix = BCrypt.checkpw(usuari.getContrasenya(), usuariGuardat.getContrasenya());
+        return coincideix;
     }
 
     /**

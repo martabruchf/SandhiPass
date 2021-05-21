@@ -108,13 +108,19 @@ public class SandhiPassGestor extends Gestor {
      * @param usuari Usuari per registrar
      */
     private void actionRegistrar(SandhiPassVO passVO, SandhiPassDAO passDAO, Usuari usuari) {
+        Utilitats util = new Utilitats();
         Usuari usuariTrobat = new Usuari();
+        Usuari usuariOriginal = new Usuari();
+        usuariOriginal.setContrasenya(usuari.getContrasenya());
+        usuariOriginal.setMail(usuari.getMail());
+        usuariOriginal.setId(usuari.getId());
         usuariTrobat = passDAO.buscarMailUsuari(usuari);
         String missatge = "";
         String error = "none;";
         if (usuariTrobat.getMail() == null) {
+            usuari = util.crearResum(usuari);
             passDAO.insertarUsuari(usuari);
-            actionIniciarSessio(passVO, passDAO, usuari);
+            actionIniciarSessio(passVO, passDAO, usuariOriginal);
             passVO.setMissatge(missatge);
             passVO.setError(error);
             setVo(passVO);
@@ -136,12 +142,13 @@ public class SandhiPassGestor extends Gestor {
      * @param usuari Usuari
      */
     private void actionIniciarSessio(SandhiPassVO passVO, SandhiPassDAO passDAO, Usuari usuari) {
+        Utilitats util = new Utilitats();
         Usuari usuariTrobat = new Usuari();
         usuariTrobat = passDAO.buscarMailUsuari(usuari);
         String missatge = "";
-        String error = "none;";
+        String error = "none;";        
         if (usuariTrobat.getMail() != null) {
-            if (usuari.getMail().equals(usuariTrobat.getMail()) && usuari.getContrasenya().equals(usuariTrobat.getContrasenya())) {
+            if (util.compararContrasenya(usuari, usuariTrobat)) {
                 actionIniciar(passVO, passDAO, usuariTrobat.getId());
                 String botoCrear = "display: none;";
                 String botoGuardar = "display: inline;";
