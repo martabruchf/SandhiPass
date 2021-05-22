@@ -31,12 +31,15 @@ public class SandhiPassVO {
     private String radio8;
     private String radio6;
     private String radio4;
-    private String missatge;
-    private String error;
+    private String missatgeUsuari;
+    private String errorUsuari;
+    private String missatgeContrasenya;
+    private String errorContrasenya;
     private String missatgeCampObli;
     private String campNom;
     private String campUsuari;
     private String campContrasenya;
+    private String campRequisits;
     private int idGuardar;
     private int idUsuari;
 
@@ -179,20 +182,36 @@ public class SandhiPassVO {
         this.radio4 = radio4;
     }
 
-    public String getMissatge() {
-        return missatge;
+    public String getMissatgeUsuari() {
+        return missatgeUsuari;
     }
 
-    public void setMissatge(String missatge) {
-        this.missatge = missatge;
+    public void setMissatgeUsuari(String missatgeUsuari) {
+        this.missatgeUsuari = missatgeUsuari;
     }
 
-    public String getError() {
-        return error;
+    public String getErrorUsuari() {
+        return errorUsuari;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setErrorUsuari(String errorUsuari) {
+        this.errorUsuari = errorUsuari;
+    }
+
+    public String getMissatgeContrasenya() {
+        return missatgeContrasenya;
+    }
+
+    public void setMissatgeContrasenya(String missatgeContrasenya) {
+        this.missatgeContrasenya = missatgeContrasenya;
+    }
+
+    public String getErrorContrasenya() {
+        return errorContrasenya;
+    }
+
+    public void setErrorContrasenya(String errorContrasenya) {
+        this.errorContrasenya = errorContrasenya;
     }
 
     public String getMissatgeCampObli() {
@@ -227,6 +246,14 @@ public class SandhiPassVO {
         this.campContrasenya = campContrasenya;
     }
 
+    public String getCampRequisits() {
+        return campRequisits;
+    }
+
+    public void setCampRequisits(String campRequisits) {
+        this.campRequisits = campRequisits;
+    }
+    
     public int getIdGuardar() {
         return idGuardar;
     }

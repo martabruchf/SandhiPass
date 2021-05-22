@@ -81,7 +81,7 @@
                     </div>
                     <div style="display:${VO.display}">
                         <fieldset class="form-group row"">
-                            <legend class="col-form-label col-sm-2 float-sm-left pt-0">Requisits</legend>
+                            <legend class="col-form-label col-sm-2 float-sm-left pt-0">Requisits<span class="campObligatori">*</span></legend>
                             <div class="col-sm-10">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="majuscules" id="majuscules" value="majuscules" ${VO.checkedTots} ${VO.checkedMaj}>
@@ -100,7 +100,11 @@
                                     <label class="form-check-label" for="simbols">Símbols</label>
                                 </div>
                             </div>
+
                         </fieldset>
+                        <div class="invalid-feedback" style="display:${VO.campRequisits}">
+                            ${VO.missatgeCampObli}
+                        </div>
                         <fieldset class="form-group row">
                             <legend class="col-form-label col-sm-2 float-sm-left pt-0">Longitud</legend>
                             <div class="col-sm-10">

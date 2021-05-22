@@ -42,7 +42,8 @@ public class Utilitats {
     }
 
     /**
-     * Mètode que genera una contrasenya aleatòria segons els criteris passats
+     * Mètode que genera una contrasenya aleatòria segons els criteris passats.
+     * No hi ha el zero, l'u, les eles ni les is, per no crear confusió.
      * @param majuscules Booleà si la contrasenya ha de contenir com a mínim una majúscula
      * @param minuscules Booleà si la contrasenya ha de contenir com a mínim una minúscula
      * @param numeros Booleà si la contrasenya ha de contenir com a mínim un número
@@ -52,10 +53,10 @@ public class Utilitats {
      */
     public String generarContrasenya(Boolean majuscules, Boolean minuscules, Boolean numeros, Boolean simbols, int llargada) {
         String contrasenya = "";
-        String llNum = "0123456789";
+        String llNum = "23456789";
         String llSimbols = "!#*+-/?@_$%&=";
-        String llMinuscules = "abcdefghijklmnopqrstuvwxyz";
-        String llMajuscules = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String llMinuscules = "abcdefghijkmnpqrstuvwxyz";
+        String llMajuscules = "ABCDEFGHJKLMNPQRSTUVWXYZ";
         String llista = "";
         try {
             SecureRandom rand = SecureRandom.getInstance("SHA1PRNG");

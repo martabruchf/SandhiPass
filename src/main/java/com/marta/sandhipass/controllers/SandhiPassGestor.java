@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Gestor de l'aplicació.
+ *
  * @author Marta Bruch
  */
 public class SandhiPassGestor extends Gestor {
@@ -29,6 +30,7 @@ public class SandhiPassGestor extends Gestor {
 
     /**
      * Mètode principal del gestor.
+     *
      * @param parameters Paràmetres que rep de la vista
      */
     @Override
@@ -111,27 +113,42 @@ public class SandhiPassGestor extends Gestor {
         Utilitats util = new Utilitats();
         Usuari usuariTrobat = new Usuari();
         Usuari usuariOriginal = new Usuari();
+        /* Guardem les dades originals en un altre usuari per poder iniciar sessió
+        i poder comparar la contrasenya amb el resum*/
         usuariOriginal.setContrasenya(usuari.getContrasenya());
         usuariOriginal.setMail(usuari.getMail());
         usuariOriginal.setId(usuari.getId());
         usuariTrobat = passDAO.buscarMailUsuari(usuari);
-        String missatge = "";
-        String error = "none;";
-        if (usuariTrobat.getMail() == null) {
-            usuari = util.crearResum(usuari);
-            passDAO.insertarUsuari(usuari);
-            actionIniciarSessio(passVO, passDAO, usuariOriginal);
-            passVO.setMissatge(missatge);
-            passVO.setError(error);
-            setVo(passVO);
+        String missatgeUsuari = "";
+        String errorUsuari = "none;";
+        String missatgeContrasenya = "";
+        String errorContrasenya = "none;";
+        // Si no ha entrat la contrasenya
+        if (usuari.getContrasenya().isEmpty()) {
+            missatgeContrasenya = "Camp obligatori.";
+            errorContrasenya = "inline;";
+        } else if (usuari.getMail().isEmpty()) {
+            missatgeUsuari = "Camp obligatori.";
+            errorUsuari = "inline;";
         } else {
-            missatge = "Aquest usuari ja existeix. Prova d'iniciar sessió.";
-            error = "inline;";
-            passVO.setMissatge(missatge);
-            passVO.setError(error);
-            passVO.setUsuari(usuari);
-            setVo(passVO);
+            if (usuariTrobat.getMail() == null) {
+                // Usuari nou
+                usuari = util.crearResum(usuari);
+                passDAO.insertarUsuari(usuari);
+                actionIniciarSessio(passVO, passDAO, usuariOriginal);
+            } else {
+                missatgeUsuari = "Aquest usuari ja existeix. Prova d'iniciar sessió.";
+                errorUsuari = "inline;";
+                passVO.setMissatgeUsuari(missatgeUsuari);
+                passVO.setErrorUsuari(errorUsuari);
+            }
         }
+        passVO.setUsuari(usuari);
+        passVO.setMissatgeUsuari(missatgeUsuari);
+        passVO.setErrorUsuari(errorUsuari);
+        passVO.setMissatgeContrasenya(missatgeContrasenya);
+        passVO.setErrorContrasenya(errorContrasenya);
+        setVo(passVO);
     }
 
     /**
@@ -146,7 +163,7 @@ public class SandhiPassGestor extends Gestor {
         Usuari usuariTrobat = new Usuari();
         usuariTrobat = passDAO.buscarMailUsuari(usuari);
         String missatge = "";
-        String error = "none;";        
+        String error = "none;";
         if (usuariTrobat.getMail() != null) {
             if (util.compararContrasenya(usuari, usuariTrobat)) {
                 actionIniciar(passVO, passDAO, usuariTrobat.getId());
@@ -162,18 +179,18 @@ public class SandhiPassGestor extends Gestor {
                 passVO.setIdUsuari(idUsuari);
                 setVo(passVO);
             } else {
-                missatge = "Usuari o contrasenya incorrecte.";
+                missatge = "Usuari i/o contrasenya incorrecte.";
                 error = "inline;";
-                passVO.setMissatge(missatge);
-                passVO.setError(error);
+                passVO.setMissatgeContrasenya(missatge);
+                passVO.setErrorContrasenya(error);
                 passVO.setUsuari(usuari);
                 setVo(passVO);
             }
         } else {
-            missatge = "Usuari no trobat. Prova de registrar-te.";
+            missatge = "Usuari no trobat. Prova de registrar-se.";
             error = "inline;";
-            passVO.setMissatge(missatge);
-            passVO.setError(error);
+            passVO.setMissatgeUsuari(missatge);
+            passVO.setErrorUsuari(error);
             passVO.setUsuari(usuari);
             setVo(passVO);
         }
@@ -225,8 +242,8 @@ public class SandhiPassGestor extends Gestor {
 
     /**
      * Mètode que crida al DAO per consultar una contrasenya en concret. I envia
-     * la contrasenya al VO per poder-la editar. Mostra la part de la vista per generar una
-     * contrasenya.
+     * la contrasenya al VO per poder-la editar. Mostra la part de la vista per
+     * generar una contrasenya.
      *
      * @param passVO SandhiPassVO
      * @param passDAO SandhiPassDAO
@@ -287,7 +304,7 @@ public class SandhiPassGestor extends Gestor {
             }
         } else {
             contrasenya.setId(Integer.parseInt(getRequest().getParameter("inputIdGuardar")));
-            passVO.setContrasenya(contrasenya);            
+            passVO.setContrasenya(contrasenya);
             passVO.setIdGuardar(idGuardar);
         }
         actionIniciar(passVO, passDAO, id_usuari);
@@ -317,11 +334,11 @@ public class SandhiPassGestor extends Gestor {
         campNom = campUsuari = campContrasenya = true;
         missatge = "Camp obligatori.";
         error = "inline;";
-        
+
         if (contrasenya.getNom().isEmpty()) {
             campNom = false;
             passVO.setMissatgeCampObli(missatge);
-            passVO.setCampNom(error);            
+            passVO.setCampNom(error);
         }
         if (contrasenya.getUsuari().isEmpty()) {
             campUsuari = false;
@@ -410,14 +427,16 @@ public class SandhiPassGestor extends Gestor {
         String idContrasenya = getRequest().getParameter("inputIdGuardar");
         String botoCrear = "display: none;";
         String botoGuardar = "display: inline;";
+        String campRequisits = "none;";
+        String missatge = "";
         majuscules = minuscules = numeros = simbols = false;
         radio20 = radio16 = radio8 = radio6 = radio4 = checkedMaj = checkedMin = checkedNum = checkedSim = "checked";
         contrasenya.setNom(getRequest().getParameter("nom"));
         contrasenya.setUrl(getRequest().getParameter("url"));
         contrasenya.setUsuari(getRequest().getParameter("usuari"));
         longitud = Integer.parseInt(getRequest().getParameter("longitud"));
+        // Recuperem si han clicat en algun checkbox
         checkbox = getRequest().getParameterValues("majuscules");
-
         if (checkbox != null) {
             majuscules = true;
             passVO.setCheckedMaj(checkedMaj);
@@ -437,6 +456,7 @@ public class SandhiPassGestor extends Gestor {
             simbols = true;
             passVO.setCheckedSim(checkedSim);
         }
+
         if (longitud == 20) {
             passVO.setRadio20(radio20);
         }
@@ -457,8 +477,17 @@ public class SandhiPassGestor extends Gestor {
             idGuardar = Integer.parseInt(getRequest().getParameter("inputIdGuardar"));
             passVO.setIdGuardar(idGuardar);
         }
-        // Cridem el mètode perquè ens generi una contrasenya aleatòria
-        contrasenya.setContrasenya(utility.generarContrasenya(majuscules, minuscules, numeros, simbols, longitud));
+        // Comprovem que almenys hagin clicat en algun checkbox
+        if (!majuscules && !minuscules && !numeros && !simbols) {
+            campRequisits = "inline;";
+            missatge = "Com a mínim ha de selecionar un requisit.";
+            passVO.setMissatgeCampObli(missatge);
+            passVO.setCampRequisits(campRequisits);
+        } else {
+            // Si hi ha algun checkbox clicat F
+            // Cridem el mètode perquè ens generi una contrasenya aleatòria
+            contrasenya.setContrasenya(utility.generarContrasenya(majuscules, minuscules, numeros, simbols, longitud));
+        }
         passVO.setContrasenya(contrasenya);
         passVO.setBotoCrear(botoCrear);
         passVO.setBotoGuardar(botoGuardar);

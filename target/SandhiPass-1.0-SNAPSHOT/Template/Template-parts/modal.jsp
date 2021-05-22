@@ -22,15 +22,18 @@
             <div class="modal-body">
                 <form action="/SandhiPass/Contrasenyes" name="formModal" method="POST">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
+                        <label for="exampleInputEmail1">Email<span class="campObligatori">*</span></label>
                         <input type="email" class="form-control" name="registreMail" id="registreMail" aria-describedby="emailHelp" value="${VO.usuari.mail}">
-                        <div class="invalid-feedback" style="display:${VO.error}">
-                            ${VO.missatge}
+                        <div class="invalid-feedback" style="display:${VO.errorUsuari}">
+                            ${VO.missatgeUsuari}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Contrasenya</label>
+                        <label for="exampleInputPassword1">Contrasenya<span class="campObligatori">*</span></label>
                         <input type="password" class="form-control" name="registreContrasenya" id="registreContrasenya" value="${VO.usuari.contrasenya}">
+                        <div class="invalid-feedback" style="display:${VO.errorContrasenya}">
+                            ${VO.missatgeContrasenya}
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button onclick="lanzarModal('registrar')" class="btn btn-primary" title="Registrar-se">Registrar-se</button>
