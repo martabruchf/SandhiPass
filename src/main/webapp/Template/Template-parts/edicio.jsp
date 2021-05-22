@@ -28,8 +28,9 @@
         </form>
         <form class="form-inline my-2 my-lg-0" action="/SandhiPass/Contrasenyes" name="formBuscar" method="POST">
             <input class="form-control mr-sm-2 ml-4" type="search" placeholder="Buscar" aria-label="Search" name="search" id="search">
-            <button class="btn btn-dark my-2 my-sm-0" title="Buscar" type="button" onclick="lanzarBuscar('buscar')" id="botosearch">Buscar</button>
+            <button class="btn btn-dark my-2 my-sm-0" title="Buscar" type="button" onclick="lanzarBuscar('buscar', '${VO.idUsuari}')" id="botosearch">Buscar</button>
             <input name="accionEvento" type="hidden" />
+            <input name="inputIdUsuari" type="hidden" value="${VO.idUsuari}" />
         </form>
     </div>
 </nav>
@@ -147,9 +148,9 @@
                                 Guardar
                             </button>
                             <button onclick="lanzarEdi('iniciar', ${VO.idUsuari})" class="btn btn-primary" title="Crear nova contrasenya" style="${VO.botoCrear}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                                <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"/>
+                                <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                                 </svg>
                                 Crear nova contrasenya
                             </button> 

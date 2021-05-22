@@ -38,7 +38,9 @@ function lanzarInfo(event, id, idUsuari) {
 
 function lanzarBuscar(event, idUsuari) {
     document.forms.formBuscar.accionEvento.value = event;
-    document.forms.formInfo.inputIdUsuari.value = idUsuari;
+    document.forms.formBuscar.inputIdUsuari.value = idUsuari;
+    console.log(event);
+    console.log(idUsuari);
     document.forms.formBuscar.submit();
 }
 

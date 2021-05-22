@@ -25,7 +25,7 @@ public class Utilitats {
      * @return L'usuari amb el resum com a contrasenya
      */
     public Usuari crearResum(Usuari usuari) {
-        String resum = BCrypt.hashpw(usuari.getContrasenya(), BCrypt.gensalt(16));
+        String resum = BCrypt.hashpw(usuari.getContrasenya(), BCrypt.gensalt(10));
         usuari.setContrasenya(resum);
         return usuari;
     }

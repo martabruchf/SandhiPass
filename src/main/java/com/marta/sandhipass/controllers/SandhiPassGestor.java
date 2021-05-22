@@ -12,10 +12,8 @@ import com.marta.sandhipass.entity.Contrasenya;
 import com.marta.sandhipass.entity.Usuari;
 import com.marta.sandhipass.utility.Utilitats;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  * Gestor de l'aplicació.
