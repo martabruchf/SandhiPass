@@ -16,16 +16,16 @@ function lanzarSortir(event) {
     document.forms.formSortir.submit();
 }
 
-function lanzarEdi(event, id) {
+function lanzarEdi(event, idUsuari) {
     document.forms.formEdi.accionEvento.value = event;
-    document.forms.formEdi.inputIdUsuari.value = id;
+    document.forms.formEdi.inputIdUsuari.value = idUsuari;
     document.forms.formEdi.submit();
 }
 
-function lanzarGuardar(event, idGuardar, id) {
+function lanzarGuardar(event, idGuardar, idUsuari) {
     document.forms.formEdi.accionEvento.value = event;
     document.forms.formEdi.inputIdGuardar.value = idGuardar;
-    document.forms.formEdi.inputIdUsuari.value = id;
+    document.forms.formEdi.inputIdUsuari.value = idUsuari;
     document.forms.formEdi.submit();
 }
 
@@ -39,8 +39,6 @@ function lanzarInfo(event, id, idUsuari) {
 function lanzarBuscar(event, idUsuari) {
     document.forms.formBuscar.accionEvento.value = event;
     document.forms.formBuscar.inputIdUsuari.value = idUsuari;
-    console.log(event);
-    console.log(idUsuari);
     document.forms.formBuscar.submit();
 }
 

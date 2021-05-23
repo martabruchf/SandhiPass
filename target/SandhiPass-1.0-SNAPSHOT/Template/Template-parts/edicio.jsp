@@ -28,7 +28,7 @@
         </form>
         <form class="form-inline my-2 my-lg-0" action="/SandhiPass/Contrasenyes" name="formBuscar" method="POST">
             <input class="form-control mr-sm-2 ml-4" type="search" placeholder="Buscar" aria-label="Search" name="search" id="search">
-            <button class="btn btn-dark my-2 my-sm-0" title="Buscar" type="button" onclick="lanzarBuscar('buscar', '${VO.idUsuari}')" id="botosearch">Buscar</button>
+            <button class="btn btn-dark my-2 my-sm-0" title="Buscar" type="button" onclick="lanzarBuscar('buscar', ${VO.idUsuari})" id="botosearch">Buscar</button>
             <input name="accionEvento" type="hidden" />
             <input name="inputIdUsuari" type="hidden" value="${VO.idUsuari}" />
         </form>
@@ -46,7 +46,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 alert alert-light" role="alert">              
-                <form action="/SandhiPass/Contrasenyes" name="formEdi" method="POST">           
+                <form action="/SandhiPass/Contrasenyes" name="formEdi" method="POST">       
                     <div class="form-group row">
                         <label for="nom" class="col-sm-2 col-form-label">Nom<span class="campObligatori">*</span></label>
                         <div class="col-sm-10">
@@ -158,7 +158,7 @@
                     </div>
                     <input name="accionEvento" type="hidden" />
                     <input name="inputIdGuardar" type="hidden" />
-                    <input name="inputIdUsuari" type="hidden" />
+                    <input name="inputIdUsuari" type="hidden" value="${VO.idUsuari}" />
                 </form>  
             </div>
         </div>

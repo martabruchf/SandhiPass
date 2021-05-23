@@ -16,7 +16,6 @@ import java.util.List;
  * @author Marta Bruch
  */
 public class SandhiPassDAO {
-    private final String KEY = "bruchfigols@gmail.com";
     private LOConnectionMYSQL connectionMYSQL;
     
     // Constructor
@@ -45,7 +44,7 @@ public class SandhiPassDAO {
         Usuari usuari = buscarNomUsuari(contrasenya);
         Contrasenya contrasenyaTrobada = new Contrasenya();
         ArrayList<Contrasenya> llistaC;
-        String query = "SELECT id, id_user, nom, url, usuari, cast(aes_decrypt(contrasenya, '" + usuari.getContrasenya() + "') as char) as contrasenya FROM sandhipass.contrasenya WHERE id = " + contrasenya.getId();
+        String query = "SELECT id, id_user, nom, url, usuari, cast(aes_decrypt(contrasenya, '" + usuari.getContrasenya() + "') as char) as contrasenya FROM contrasenya WHERE id = " + contrasenya.getId();
         List<Object> llista = connectionMYSQL.select(query, Contrasenya.class);
         llistaC = (ArrayList<Contrasenya>) (Object) llista;
         for (Contrasenya x : llistaC){
@@ -106,8 +105,8 @@ public class SandhiPassDAO {
      */
     public List<Object> buscarContrasenyaPerNom(String paraula, int id_usuari){
         paraula = "%" + paraula + "%";
-        String query = "SELECT * FROM contrasenya WHERE nom like '" + paraula + "' or url like '"+ paraula + "' or usuari like '" + paraula + "' and id_user = " + id_usuari + " order by nom";
-        List<Object> llista = connectionMYSQL.select(query, Contrasenya.class);        
+        String query = "SELECT * FROM contrasenya WHERE id_user = " + id_usuari + " and (nom like '" + paraula + "' or url like '"+ paraula + "' or usuari like '" + paraula + "') order by nom";
+        List<Object> llista = connectionMYSQL.select(query, Contrasenya.class);
         return llista;
     }
     

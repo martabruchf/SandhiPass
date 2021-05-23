@@ -55,11 +55,9 @@
                     </table>
                     <input name="accionEvento" type="hidden" />
                     <input name="inputid" type="hidden" />
-                    <input name="inputIdUsuari" type="hidden" />
+                    <input name="inputIdUsuari" type="hidden" value="${VO.idUsuari}" />
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-
