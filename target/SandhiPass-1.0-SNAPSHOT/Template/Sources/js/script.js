@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+// Onclick dels botons. Envien la informació dels formularis
 
 function lanzarModal(event) {
     document.forms.formModal.accionEvento.value = event;

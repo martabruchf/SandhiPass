@@ -8,8 +8,6 @@ package com.marta.sandhipass.utility;
 import com.marta.sandhipass.entity.Usuari;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Random;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**

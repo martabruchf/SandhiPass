@@ -14,7 +14,7 @@ import java.util.List;
  * @author Marta Bruch
  */
 public interface ILOConnectionMYSQL {
-    final String DATABASE = "sandhipass"; //Nom de la base de dades
+    final String DATABASE = "sandhipass";
     final String PORT = "3306";
     final String DRIVER_URL = "jdbc:mysql://127.0.0.1:"+PORT+"/" + DATABASE;
     final String USER = "root";

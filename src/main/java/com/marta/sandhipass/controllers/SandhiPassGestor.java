@@ -100,7 +100,7 @@ public class SandhiPassGestor extends Gestor {
     }
 
     /**
-     * Mètode que si un usuari no existeix l'insereix a la base de dades. I tot
+     * Mètode que si un usuari no existeix a la base de dades l'insereix. I tot
      * seguit li inicia la sessió.
      *
      * @param passVO SandhiPassVO
@@ -212,7 +212,7 @@ public class SandhiPassGestor extends Gestor {
     /**
      * Mètode que crida al DAO per consultar una contrasenya en concret. I envia
      * la contrasenya al VO. També oculta de la vista la part de generar una
-     * contrasenya i el botó de guardar i mostra el botó de crear nova
+     * contrasenya i el botó de guardar, i mostra el botó de crear nova
      * contrasenya.
      *
      * @param passVO SandhiPassVO
@@ -324,7 +324,7 @@ public class SandhiPassGestor extends Gestor {
      *
      * @param passVO SandhiPassVO
      * @param contrasenya Contrasenya per comprovar els camps
-     * @return Retorna true si tots els camps estan emplenats
+     * @return Retorna true si tots els camps estan emplenats, false en cas contrari
      */
     private Boolean validarCamps(SandhiPassVO passVO, Contrasenya contrasenya) {
         Boolean campNom, campUsuari, campContrasenya;
@@ -411,10 +411,11 @@ public class SandhiPassGestor extends Gestor {
 
     /**
      * Mètode que genera una contrasenya aleatòria segons els criteris que ha
-     * triat l'usuari.
+     * triat l'usuari. Envia al VO la contrasenya generada.
      *
      * @param passVO SandhiPassVO
      * @param contrasenya Contrasenya que s'està creant
+     * @param id_usuari id de l'usuari
      */
     private void actionGenerarContrasenya(SandhiPassVO passVO, Contrasenya contrasenya, int id_usuari) {
         int longitud, idGuardar = -1;

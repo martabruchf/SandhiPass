@@ -8,8 +8,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 
-
-
+<!-- Barra de navegació -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <span class="navbar-brand mb-0 h1">SandhiPass</span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,9 +34,14 @@
     </div>
 </nav>
 
+<!-- Si l'id de l'usuari és 0, vol dir que no hi ha ningú que hagi iniciat sessió,
+per tant, es mostra el modal per registrar-se o iniciar sessió F-->
+            
 <c:if test="${VO.idUsuari == 0}">
     <jsp:include page="modal.jsp" flush="true"></jsp:include>
 </c:if>
+
+<!-- Part de l'edició de la web -->
 
 <div class="container mt-4">
     <div id="titol">

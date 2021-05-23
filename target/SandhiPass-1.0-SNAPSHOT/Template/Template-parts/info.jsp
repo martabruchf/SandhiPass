@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
+<!-- Part de la web de les meves contrasenyes. Aquí recuperem les contrasenyes que té l'usuari -->
 <div class="container mt-4">
     <div class="row">
         <div class="col-lg-12">

@@ -41,7 +41,7 @@ public class SandhiPassDAO {
      * @return La contrasenya trobada
      */
     public Contrasenya buscarContrasenya(Contrasenya contrasenya){
-        Usuari usuari = buscarNomUsuari(contrasenya);
+        Usuari usuari = buscarIdUsuari(contrasenya);
         Contrasenya contrasenyaTrobada = new Contrasenya();
         ArrayList<Contrasenya> llistaC;
         String query = "SELECT id, id_user, nom, url, usuari, cast(aes_decrypt(contrasenya, '" + usuari.getContrasenya() + "') as char) as contrasenya FROM contrasenya WHERE id = " + contrasenya.getId();
@@ -63,7 +63,7 @@ public class SandhiPassDAO {
      * @param contrasenya Contrasenya la qual conté l'id de l'usuari a buscar
      * @return L'usuari trobat
      */
-    public Usuari buscarNomUsuari(Contrasenya contrasenya){
+    public Usuari buscarIdUsuari(Contrasenya contrasenya){
         Usuari usuari = new Usuari();
         ArrayList<Usuari> llistaU;
         String query = "SELECT id, mail, contrasenya FROM usuari WHERE id = " + contrasenya.getId_user();
@@ -117,7 +117,7 @@ public class SandhiPassDAO {
      * @param contrasenya Contrasenya a inserir
      */
     public void insertarContrasenya(Contrasenya contrasenya){
-        Usuari usuari = buscarNomUsuari(contrasenya);
+        Usuari usuari = buscarIdUsuari(contrasenya);
         String query = "INSERT INTO contrasenya(id_user, nom, url, usuari, contrasenya) VALUES("+ contrasenya.getId_user() + ", '" + contrasenya.getNom() + "', '" + contrasenya.getUrl() + "', '" + contrasenya.getUsuari() + "', aes_encrypt('" + contrasenya.getContrasenya() + "', '" + usuari.getContrasenya() + "'))";
         connectionMYSQL.insert(query);
     }
@@ -134,11 +134,11 @@ public class SandhiPassDAO {
     /**
      * Mètode que modifica una contrasenya a la base de dades.
      * Encripta la columna de la contrasenya, utilitzant com a key
-     * el mail de l'usuari.
+     * el resum de l'usuari.
      * @param contrasenya Contrasenya a modificar
      */
     public void modificarContrasenya(Contrasenya contrasenya){
-        Usuari usuari = buscarNomUsuari(contrasenya);
+        Usuari usuari = buscarIdUsuari(contrasenya);
         String query = "UPDATE contrasenya SET nom = '" + contrasenya.getNom() + "', url = '" + contrasenya.getUrl() + "', usuari = '" + contrasenya.getUsuari() + "', contrasenya = aes_encrypt('" + contrasenya.getContrasenya() + "', '" + usuari.getContrasenya() + "') WHERE id = " + contrasenya.getId();
         connectionMYSQL.update(query);        
     }

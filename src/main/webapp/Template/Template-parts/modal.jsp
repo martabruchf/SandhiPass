@@ -8,9 +8,8 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@page import="java.util.*" %>
 
-<!-- Button trigger modal -->
 
-<!-- Modal -->
+<!-- Modal del login -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -45,8 +44,3 @@
         </div>
     </div>
 </div>
-
-<%
-
-
-%>

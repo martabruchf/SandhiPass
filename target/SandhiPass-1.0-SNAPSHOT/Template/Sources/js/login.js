@@ -6,7 +6,7 @@
 
 
 $(function() {
-    console.log( "ready!" );
-    $('#staticBackdrop').modal('toggle')
+//    Crida el modal del login
+    $('#staticBackdrop').modal('toggle');
     
 });
