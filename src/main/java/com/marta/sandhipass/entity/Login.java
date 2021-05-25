@@ -20,6 +20,9 @@ public class Login {
     private String sistema_operatiu;
     private String navegador;
 
+    /**
+     * Crea una instància de la classe Login
+     */
     public Login() {
     }
 

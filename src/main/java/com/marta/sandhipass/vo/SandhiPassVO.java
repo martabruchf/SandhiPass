@@ -43,6 +43,9 @@ public class SandhiPassVO {
     private int idGuardar;
     private int idUsuari;
 
+    /**
+     * Crea una instància de la classe SandhiPassVO.
+     */
     public SandhiPassVO() {
     }
 

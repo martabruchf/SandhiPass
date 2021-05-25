@@ -18,6 +18,9 @@ public class Preferencies {
     private String simbols;
     private String llargada;
 
+    /**
+     * Crea una instància de la classe Preferencies
+     */
     public Preferencies() {
     }
 

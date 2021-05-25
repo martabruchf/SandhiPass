@@ -13,8 +13,9 @@
         <jsp:include page="./Template/Template-subparts/header.jsp" flush="true"></jsp:include>
     </head>
     <body>
-        <jsp:include page="./Template/Template-parts/edicio.jsp" flush="true"></jsp:include>
+        <jsp:include page="./Template/Template-parts/nav.jsp" flush="true"></jsp:include>
         <jsp:include page="./Template/Template-parts/info.jsp" flush="true"></jsp:include>
+        <jsp:include page="./Template/Template-parts/edicio.jsp" flush="true"></jsp:include>        
         <jsp:include page="./Template/Template-subparts/footer.jsp" flush="true"></jsp:include>
     </body>
     

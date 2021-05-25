@@ -18,7 +18,9 @@ import java.util.List;
 public class SandhiPassDAO {
     private LOConnectionMYSQL connectionMYSQL;
     
-    // Constructor
+    /**
+     * Crea una instància de la classe SandhiPassDAO.
+     */
     public SandhiPassDAO() {
         this.connectionMYSQL = new LOConnectionMYSQL();
     }

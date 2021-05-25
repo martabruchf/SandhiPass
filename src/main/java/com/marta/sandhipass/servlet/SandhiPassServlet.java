@@ -8,15 +8,12 @@ package com.marta.sandhipass.servlet;
 import com.marta.sandhipass.core.Gestor;
 import com.marta.sandhipass.core.SandhiPassRequestResolver;
 import com.marta.sandhipass.core.SandhiPassScreenResolver;
-import com.marta.sandhipass.dao.SandhiPassDAO;
-import com.marta.sandhipass.entity.Usuari;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Classe del Servlet.
@@ -32,8 +29,8 @@ public class SandhiPassServlet extends HttpServlet {
      * Mètode que rep una invocació i genera una resposta en funció de les dades de la invocació.
      * @param request HttpServletRequest
      * @param response HttpServletResponse
-     * @throws ServletException
-     * @throws IOException 
+     * @throws ServletException Llança l'excepció ServletException
+     * @throws IOException Llança l'excepció IOException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Gestor gestor = SandhiPassRequestResolver.resolveGestor(request);
@@ -47,8 +44,8 @@ public class SandhiPassServlet extends HttpServlet {
      * Mètode per la petició Get.
      * @param request HttpServletRequest
      * @param response HttpServletResponse
-     * @throws ServletException
-     * @throws IOException 
+     * @throws ServletException Llança l'excepció ServletException
+     * @throws IOException Llança l'excepció IOException
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,8 +56,8 @@ public class SandhiPassServlet extends HttpServlet {
      * Mètode per la petició Post.
      * @param request HttpServletRequest
      * @param response HttpServletResponse
-     * @throws ServletException
-     * @throws IOException 
+     * @throws ServletException Llança l'excepció ServletException
+     * @throws IOException Llança l'excepció IOException
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

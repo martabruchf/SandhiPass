@@ -16,6 +16,10 @@ public abstract class Gestor {
     private final HttpServletRequest request;
     private Object vo;
 
+    /**
+     * Crea una instància de la classe Gestor.
+     * @param request HttpServletRequest
+     */
     public Gestor(HttpServletRequest request) {
         this.request = request;
     }

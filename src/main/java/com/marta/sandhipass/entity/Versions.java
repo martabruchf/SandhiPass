@@ -17,6 +17,9 @@ public class Versions {
     private String contrasenya;
     private Date data_baixa;
 
+    /**
+     * Crea una instància de la classe Versions
+     */
     public Versions() {
     }
 

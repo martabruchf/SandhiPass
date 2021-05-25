@@ -14,6 +14,9 @@ public class Usuari {
     private String mail;
     private String contrasenya;
 
+    /**
+     * Crea una instància de la classe Usuari
+     */
     public Usuari() {
     }
 

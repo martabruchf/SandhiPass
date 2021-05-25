@@ -152,7 +152,7 @@ public class LOConnectionMYSQL implements ILOConnectionMYSQL {
      * @param rs ResultSet
      * @param classType Classe que ha de retornar
      * @return Llista d'objectes retornats per la base de dades
-     * @throws IllegalAccessException 
+     * @throws IllegalAccessException Llança l'excepció IllegalAccessException
      */
     @Override
     public List<Object> readResultSet(ResultSet rs, Class classType) throws IllegalAccessException {

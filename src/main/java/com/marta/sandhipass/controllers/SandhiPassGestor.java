@@ -22,6 +22,10 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class SandhiPassGestor extends Gestor {
 
+    /**
+     * Crea una instància de la classe SandhiPassGestor.
+     * @param request HttpServletRequest
+     */
     public SandhiPassGestor(HttpServletRequest request) {
         super(request);
     }
@@ -290,6 +294,10 @@ public class SandhiPassGestor extends Gestor {
         contrasenya.setUsuari(getRequest().getParameter("usuari"));
         contrasenya.setContrasenya(getRequest().getParameter("contrasenya"));
         validar = validarCamps(passVO, contrasenya);
+        // Correcció arrant de les respostes dels tests d'usabilitat
+        if(contrasenya.getUrl() == null || contrasenya.getUrl().isEmpty()){
+            contrasenya.setUrl(" ");            
+        }
         // Si tots els camps estan emplenats
         if (validar) {
             // Per guardar una contrasenya nova

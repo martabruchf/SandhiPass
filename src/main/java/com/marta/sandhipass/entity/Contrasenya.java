@@ -17,6 +17,9 @@ public class Contrasenya {
     private String usuari;
     private String contrasenya;
 
+    /**
+     * Crea una instància de la classe Contrasenya
+     */
     public Contrasenya() {
     }
 
