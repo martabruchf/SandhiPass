@@ -20,13 +20,6 @@ per tant, es mostra el modal per registrar-se o iniciar sessió F-->
 <div class="container mt-4">    
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div style="text-align:center;">
-                    <div class="alert alert-primary" role="alert">
-                        <h5>Altes, modificacions i consultes</h5>
-                    </div>
-                </div>
-            </div>
             <div class="col-lg-12 alert alert-light" role="alert">              
                 <form action="/SandhiPass/Contrasenyes" name="formEdi" method="POST">       
                     <div class="form-group row">

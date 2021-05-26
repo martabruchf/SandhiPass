@@ -21,8 +21,8 @@
             <div class="modal-body">
                 <form action="/SandhiPass/Contrasenyes" name="formModal" method="POST">
                     <div>
-                        <p>Per registrar-se: Escriu el seu correu electrònic i una contrasenya i clica el botó de Registrar-se.</p>
-                        <p>Per inicar sessió: Escriu el correu electrònic i la contrasenya que va utilitzar quan es va registrar.</p>
+                        <p><b>Per registrar-se:</b> Escriu el teu correu electrònic i una contrasenya i clica el botó de Registrar-se.</p>
+                        <p><b>Per inicar sessió:</b> Escriu el correu electrònic i la contrasenya que vas utilitzar quan et vas registrar.</p>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email<span class="campObligatori">*</span></label>

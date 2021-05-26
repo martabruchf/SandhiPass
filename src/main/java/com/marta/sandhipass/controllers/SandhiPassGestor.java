@@ -24,6 +24,7 @@ public class SandhiPassGestor extends Gestor {
 
     /**
      * Crea una instància de la classe SandhiPassGestor.
+     *
      * @param request HttpServletRequest
      */
     public SandhiPassGestor(HttpServletRequest request) {
@@ -53,17 +54,7 @@ public class SandhiPassGestor extends Gestor {
             evento = "buscar";
         }
 
-        switch (evento) {
-            case "registrar":
-                usuari.setMail(getRequest().getParameter("registreMail"));
-                usuari.setContrasenya(getRequest().getParameter("registreContrasenya"));
-                actionRegistrar(passVO, passDAO, usuari);
-                break;
-            case "iniciarsessio":
-                usuari.setMail(getRequest().getParameter("registreMail"));
-                usuari.setContrasenya(getRequest().getParameter("registreContrasenya"));
-                actionIniciarSessio(passVO, passDAO, usuari);
-                break;
+        switch (evento) {            
             case "iniciar":
                 actionIniciar(passVO, passDAO, id_usuari);
                 String botoCrear = "display: none;";
@@ -75,6 +66,16 @@ public class SandhiPassGestor extends Gestor {
                 passVO.setRadio16(radio16);
                 passVO.setCheckedTots(checkedTots);
                 setVo(passVO);
+                break;
+            case "registrar":
+                usuari.setMail(getRequest().getParameter("registreMail"));
+                usuari.setContrasenya(getRequest().getParameter("registreContrasenya"));
+                actionRegistrar(passVO, passDAO, usuari);
+                break;
+            case "iniciarsessio":
+                usuari.setMail(getRequest().getParameter("registreMail"));
+                usuari.setContrasenya(getRequest().getParameter("registreContrasenya"));
+                actionIniciarSessio(passVO, passDAO, usuari);
                 break;
             case "consultar":
                 contrasenya.setId(Integer.parseInt(getRequest().getParameter("inputid")));
@@ -126,12 +127,15 @@ public class SandhiPassGestor extends Gestor {
         String missatgeContrasenya = "";
         String errorContrasenya = "none;";
         // Si no ha entrat la contrasenya
-        if (usuari.getContrasenya().isEmpty()) {
-            missatgeContrasenya = "Camp obligatori.";
-            errorContrasenya = "inline;";
-        } else if (usuari.getMail().isEmpty()) {
-            missatgeUsuari = "Camp obligatori.";
-            errorUsuari = "inline;";
+        if (usuari.getContrasenya().isEmpty() || usuari.getMail().isEmpty()) {
+            if (usuari.getContrasenya().isEmpty()) {
+                missatgeContrasenya = "Camp obligatori.";
+                errorContrasenya = "inline;";
+            }
+            if (usuari.getMail().isEmpty()) {
+                missatgeUsuari = "Camp obligatori.";
+                errorUsuari = "inline;";
+            }
         } else {
             if (usuariTrobat.getMail() == null) {
                 // Usuari nou
@@ -295,8 +299,8 @@ public class SandhiPassGestor extends Gestor {
         contrasenya.setContrasenya(getRequest().getParameter("contrasenya"));
         validar = validarCamps(passVO, contrasenya);
         // Correcció arrant de les respostes dels tests d'usabilitat
-        if(contrasenya.getUrl() == null || contrasenya.getUrl().isEmpty()){
-            contrasenya.setUrl(" ");            
+        if (contrasenya.getUrl() == null || contrasenya.getUrl().isEmpty()) {
+            contrasenya.setUrl(" ");
         }
         // Si tots els camps estan emplenats
         if (validar) {
@@ -332,7 +336,8 @@ public class SandhiPassGestor extends Gestor {
      *
      * @param passVO SandhiPassVO
      * @param contrasenya Contrasenya per comprovar els camps
-     * @return Retorna true si tots els camps estan emplenats, false en cas contrari
+     * @return Retorna true si tots els camps estan emplenats, false en cas
+     * contrari
      */
     private Boolean validarCamps(SandhiPassVO passVO, Contrasenya contrasenya) {
         Boolean campNom, campUsuari, campContrasenya;
