@@ -9,7 +9,7 @@
 
 
 <!-- Si l'id de l'usuari és 0, vol dir que no hi ha ningú que hagi iniciat sessió,
-per tant, es mostra el modal per registrar-se o iniciar sessió F-->
+per tant, es mostra el modal per registrar-se o iniciar sessió -->
 
 <c:if test="${VO.idUsuari == 0}">
     <jsp:include page="modal.jsp" flush="true"></jsp:include>

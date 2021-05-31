@@ -47,14 +47,14 @@ public class SandhiPassGestor extends Gestor {
             id_usuari = Integer.parseInt(getRequest().getParameter("inputIdUsuari"));
         }
         contrasenya.setId_user(id_usuari);
-        String evento = getRequest().getParameter("accionEvento");
-        if (evento == null) {
-            evento = "iniciar";
-        } else if ("".equals(evento)) {
-            evento = "buscar";
+        String event = getRequest().getParameter("accionEvento");
+        if (event == null) {
+            event = "iniciar";
+        } else if ("".equals(event)) {
+            event = "buscar";
         }
 
-        switch (evento) {            
+        switch (event) {            
             case "iniciar":
                 actionIniciar(passVO, passDAO, id_usuari);
                 String botoCrear = "display: none;";
@@ -114,7 +114,7 @@ public class SandhiPassGestor extends Gestor {
      */
     private void actionRegistrar(SandhiPassVO passVO, SandhiPassDAO passDAO, Usuari usuari) {
         Utilitats util = new Utilitats();
-        Usuari usuariTrobat = new Usuari();
+        Usuari usuariTrobat;
         Usuari usuariOriginal = new Usuari();
         /* Guardem les dades originals en un altre usuari per poder iniciar sessió
         i poder comparar la contrasenya amb el resum*/
@@ -162,11 +162,11 @@ public class SandhiPassGestor extends Gestor {
      *
      * @param passVO SandhiPassVO
      * @param passDAO SandhiPassDAO
-     * @param usuari Usuari
+     * @param usuari UsuariA
      */
     private void actionIniciarSessio(SandhiPassVO passVO, SandhiPassDAO passDAO, Usuari usuari) {
         Utilitats util = new Utilitats();
-        Usuari usuariTrobat = new Usuari();
+        Usuari usuariTrobat;
         usuariTrobat = passDAO.buscarMailUsuari(usuari);
         String missatge = "";
         String error = "none;";
@@ -496,7 +496,7 @@ public class SandhiPassGestor extends Gestor {
             passVO.setMissatgeCampObli(missatge);
             passVO.setCampRequisits(campRequisits);
         } else {
-            // Si hi ha algun checkbox clicat F
+            // Si hi ha algun checkbox clicat
             // Cridem el mètode perquè ens generi una contrasenya aleatòria
             contrasenya.setContrasenya(utility.generarContrasenya(majuscules, minuscules, numeros, simbols, longitud));
         }

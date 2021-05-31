@@ -53,13 +53,14 @@ public class Utilitats {
         String contrasenya = "";
         String llNum = "23456789";
         String llSimbols = "!#*+-/?@_$%&=";
-        String llMinuscules = "abcdefghijkmnpqrstuvwxyz";
-        String llMajuscules = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+        String llMinuscules = "abcdefghjkmnpqrstuvwxyz";
+        String llMajuscules = "ABCDEFGHJKMNPQRSTUVWXYZ";
         String llista = "";
         try {
             SecureRandom rand = SecureRandom.getInstance("SHA1PRNG");
-            // Omplim la llista per tenir els caràcters a utilitzar
-            // I afegim un caràcter a la contrasenya
+            /*Omplim la llista per tenir els caràcters a utilitzar
+             I afegim un caràcter de cada a la contrasenya per assegurar-nos
+             que com a mínim hi hagi un tipus de caràcter que l'usuari ha seleccionat.*/
             if (numeros) {
                 llista = llista + llNum;
                 contrasenya = contrasenya + Character.toString(llNum.charAt(rand.nextInt(llNum.length())));
@@ -70,7 +71,6 @@ public class Utilitats {
                 contrasenya = contrasenya + Character.toString(llMinuscules.charAt(rand.nextInt(llMinuscules.length())));
                 llargada --;
             }
-
             if (simbols) {
                 llista = llista + llSimbols;
                 contrasenya = contrasenya + Character.toString(llSimbols.charAt(rand.nextInt(llSimbols.length())));
